@@ -1,0 +1,14 @@
+name: external Triggered
+
+on:
+  repository_dispatch:
+    types: [custom-event]
+jobs:
+  external:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Triggered by an external event!"
+      - run: |
+          echo "Client payload value: ${{ github.event.client_payload.my_key }}"      
+
+
