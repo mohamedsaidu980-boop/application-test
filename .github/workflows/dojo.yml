@@ -1,0 +1,16 @@
+name: Repository Dispatch Example
+
+on:
+  repository_dispatch:
+    types:
+      - custom-event
+
+jobs:
+  external:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger message
+        run: echo "Triggered by an external event!"
+
+      - name: Show payload value
+        run: echo "Client payload value: ${{ github.event.client_payload.my_key }}"
